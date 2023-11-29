@@ -1,0 +1,168 @@
+Certainly! Here are basic examples for the syntax of the mentioned SQL statements:
+
+### 1. **CREATE Statement:**
+
+#### Creating a Table:
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    salary DECIMAL(10, 2),
+    hire_date DATE
+);
+```
+
+### 2. **ALTER Statement:**
+
+#### Adding a Column:
+```sql
+ALTER TABLE employees
+ADD COLUMN department VARCHAR(50);
+```
+
+#### Modifying a Column:
+```sql
+ALTER TABLE employees
+MODIFY COLUMN salary DECIMAL(12, 2);
+```
+
+#### Dropping a Column:
+```sql
+ALTER TABLE employees
+DROP COLUMN department;
+```
+
+### 3. **DROP Statement:**
+
+#### Dropping a Table:
+```sql
+DROP TABLE employees;
+```
+
+### 4. **TRUNCATE Statement:**
+
+#### Truncating a Table:
+```sql
+TRUNCATE TABLE employees;
+```
+
+### 5. **RENAME Statement:**
+
+#### Renaming a Table:
+```sql
+RENAME TABLE employees TO staff;
+```
+
+### 6. **INSERT Statement:**
+
+#### Inserting Data:
+```sql
+INSERT INTO employees (employee_id, first_name, last_name, salary, hire_date)
+VALUES (1, 'John', 'Doe', 50000.00, '2023-01-01');
+```
+
+### 7. **UPDATE Statement:**
+
+#### Updating Data:
+```sql
+UPDATE employees
+SET salary = 55000.00
+WHERE employee_id = 1;
+```
+
+### 8. **DELETE Statement:**
+
+#### Deleting Data:
+```sql
+DELETE FROM employees
+WHERE employee_id = 1;
+```
+
+### 9. **SELECT Statement:**
+
+#### Selecting Data:
+```sql
+SELECT * FROM employees;
+```
+
+Certainly! Let's go through examples for creating tables with constraints, restricting and sorting data, and using aggregate and mathematical functions:
+
+### 1. **Creating Table with Constraints:**
+
+```sql
+-- Creating a table with constraints
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    birth_date DATE,
+    course_id INT,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+```
+
+In this example, we create a table named `students` with constraints:
+- `NOT NULL` for the `first_name` and `last_name` columns.
+- `UNIQUE` constraint for the `email` column.
+- `PRIMARY KEY` constraint for the `student_id` column.
+- `FOREIGN KEY` constraint referencing the `course_id` column to another table `courses`.
+
+### 2. **Restricting and Sorting Data:**
+
+#### a. Using DISTINCT, IN, AS, SORT, LIKE, IS NULL, OR
+
+```sql
+-- Selecting distinct values, filtering with IN, using AS alias, sorting, using LIKE, checking for NULL
+SELECT DISTINCT course_id
+FROM students
+WHERE birth_date > '2000-01-01'
+   AND course_id IN (1, 2, 3)
+   AND last_name LIKE 'S%'
+   OR first_name IS NULL
+ORDER BY course_id DESC;
+```
+
+#### b. Using GROUP BY, HAVING clause, ORDER BY clause
+
+```sql
+-- Grouping data by course_id, using HAVING to filter, ordering by the count
+SELECT course_id, COUNT(*) AS student_count
+FROM students
+GROUP BY course_id
+HAVING student_count > 10
+ORDER BY student_count DESC;
+```
+
+### 3. **Aggregate and Mathematical Functions:**
+
+#### a. AVG, MIN, MAX, SUM, COUNT
+
+```sql
+-- Using aggregate functions
+SELECT AVG(salary) AS avg_salary,
+       MIN(salary) AS min_salary,
+       MAX(salary) AS max_salary,
+       SUM(salary) AS total_salary,
+       COUNT(*) AS employee_count
+FROM employees;
+```
+
+#### b. ABS, SQRT, ROUND, TRUNCATE, SIGN, POWER, MOD, FLOOR, CEIL
+
+```sql
+-- Using mathematical functions
+SELECT ABS(-10) AS absolute_value,
+       SQRT(25) AS square_root,
+       ROUND(3.14159, 2) AS rounded_value,
+       TRUNCATE(5.789, 1) AS truncated_value,
+       SIGN(-15) AS sign_value,
+       POWER(2, 3) AS power_value,
+       MOD(10, 3) AS modulo_result,
+       FLOOR(7.89) AS floor_value,
+       CEIL(4.21) AS ceil_value;
+```
+
+
+This paste expires in <1 day. Public IP access. Share whatever you see with others in seconds with Context.Terms of ServiceReport this
